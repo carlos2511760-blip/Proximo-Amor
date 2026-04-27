@@ -2,13 +2,14 @@ import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Search, MapPin, Calendar, ChevronDown } from 'lucide-react';
 
+const base = import.meta.env.BASE_URL;
+
 const Header = () => {
   const navigate = useNavigate();
   return (
     <header style={{ backgroundColor: 'var(--primary)', padding: '1rem 2rem', display: 'flex', alignItems: 'center', justifyContent: 'space-between', color: 'white', position: 'sticky', top: 0, zIndex: 50 }}>
       <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
-        <img src="/icons/logoBBG.png" alt="Proximo Amor" style={{ height: '50px' }} onError={(e) => { e.target.style.display = 'none'; }} />
-        {/* Placeholder if logo image is not found */}
+        <img src={`${base}icons/logoBBG.png`} alt="Proximo Amor" style={{ height: '50px' }} onError={(e) => { e.target.style.display = 'none'; }} />
       </div>
       <nav style={{ display: 'flex', gap: '2rem', alignItems: 'center', fontWeight: '500' }}>
         <a href="#enraizar">Enraizar</a>
@@ -35,7 +36,7 @@ const Hero = () => {
       flexDirection: 'column', 
       alignItems: 'center', 
       justifyContent: 'center',
-      backgroundImage: 'url(/homeBG.jpeg)',
+      backgroundImage: `url(${base}homeBG.jpeg)`,
       backgroundSize: 'cover',
       backgroundPosition: 'center',
       color: 'white',
@@ -100,7 +101,7 @@ const SearchFilters = () => {
 const Jobs = () => {
   const jobs = [
     { 
-      img: '/jardim.jpeg', 
+      img: `${base}jardim.jpeg`, 
       title: 'Jardim Comunitário', 
       author: 'Moradores da Rua 10', 
       desc: 'Busca-se voluntários para montar um jardim comunitário em nosso bairro para fortalecer o hortifruti da região!',
@@ -108,15 +109,15 @@ const Jobs = () => {
       date: '21/04/2026'
     },
     { 
-      img: '/pintura.webp', 
+      img: `${base}pintura.webp`, 
       title: 'Artistas para Pintura...', 
       author: 'ONG Crianças do Bem', 
       desc: 'Venha fazer pintura de rosto e ajudar a criar momentos felizes em nossa comunidade!',
-      loc: 'Osasco, São Paulo, Jardim D\'abril - Av. Prestes Maia, 150 - 06040...',
+      loc: "Osasco, São Paulo, Jardim D'abril - Av. Prestes Maia, 150 - 06040...",
       date: '23/04/2026'
     },
     { 
-      img: '/alimento.webp', 
+      img: `${base}alimento.webp`, 
       title: 'Voluntários para entr...', 
       author: 'Instituto Iara Teixeira de Lima', 
       desc: 'Precisamos de voluntários para entregar alimentos na comunidade México 70 e espalhar cuidado.',
@@ -124,7 +125,7 @@ const Jobs = () => {
       date: '28/04/2026'
     },
     { 
-      img: '/doacao.webp', 
+      img: `${base}doacao.webp`, 
       title: 'Enfermeiros para doa...', 
       author: 'Ordem Paranormal | Tudo Começa...', 
       desc: 'No universo de Ordem Paranormal, o Sangue representa a força que se manifesta através das emoções extremas da própria...',
@@ -137,7 +138,7 @@ const Jobs = () => {
     <section style={{ 
       padding: '4rem 2rem', 
       backgroundColor: '#fff',
-      backgroundImage: 'url(/leaves.png)',
+      backgroundImage: `url(${base}leaves.png)`,
       backgroundSize: '100%',
       backgroundRepeat: 'repeat-y',
       position: 'relative'
