@@ -1,0 +1,83 @@
+@font-face {
+  font-family: 'Alexandria';
+  src: url('/Alexandria-VariableFont_wght.ttf') format('truetype');
+}
+@font-face {
+  font-family: 'Arvo';
+  src: url('/Arvo-Regular.ttf') format('truetype');
+  font-weight: normal;
+}
+@font-face {
+  font-family: 'Arvo';
+  src: url('/Arvo-Bold.ttf') format('truetype');
+  font-weight: bold;
+}
+@font-face {
+  font-family: 'TanHeadline';
+  src: url('/TANHEADLINE-Regular.ttf') format('truetype');
+}
+
+:root {
+  --primary: #49B6FF;
+  --primary-hover: #3AA0E8;
+  --secondary: #3A47D5;
+  --secondary-hover: #2F39AC;
+  --background: #ffffff;
+  --foreground: #333333;
+  --muted: #EAEAEA;
+  --muted-foreground: #6b7280;
+  --card: #EAEAEA;
+  --card-foreground: #333333;
+  --border: #D1D5DB;
+  --radius: 1.5rem;
+  --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  --font-main: 'Alexandria', system-ui, sans-serif;
+  --font-heading: 'TanHeadline', 'Arvo', serif;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: var(--font-main);
+  background-color: var(--background);
+  color: var(--foreground);
+  line-height: 1.5;
+  overflow-x: hidden;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-heading);
+  color: #403F3E;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+button {
+  cursor: pointer;
+  border: none;
+  outline: none;
+  font-family: var(--font-main);
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.6s ease-out forwards;
+}
