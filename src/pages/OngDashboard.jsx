@@ -21,7 +21,7 @@ import { getMapsUrl, getCalendarUrl } from '../utils';
 import { useLanguage } from '../contexts/LanguageContext';
 import { useAuth } from '../contexts/AuthContext';
 import { supabase } from '../supabase';
-import ChatMessenger from '../components/ChatMessenger';
+// import ChatMessenger from '../components/ChatMessenger';
 import Toast from '../components/Toast';
 import Layout from '../components/layout/Layout';
 
@@ -362,7 +362,12 @@ const OngDashboard = () => {
           )}
 
         {activeTab === 'comunicacao' && (
-            <ChatMessenger userType="ong" />
+            <div className="empty-state" style={{ padding: '3rem' }}>
+              <MessageSquare size={48} color="#cbd5e1" />
+              <h3>Chat em manutenção</h3>
+              <p>O sistema de mensagens está sendo atualizado.</p>
+            </div>
+            // <ChatMessenger userType="ong" />
           )}
 
           {activeTab === 'relatorios' && (
