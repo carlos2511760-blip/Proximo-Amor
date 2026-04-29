@@ -14,8 +14,8 @@ const AboutUs = () => {
   ];
 
   const team = [
-    { name: 'Flávio Azevedo', role: 'Fundador e CEO', img: '/resources/images/flavio.JPG' },
-    { name: 'Guilherme Lima', role: 'Fundador e CTO', img: '/resources/images/guilherme.JPG' }
+    { name: 'Flávio Azevedo', role: 'Fundador e CEO', img: 'flavio.JPG' },
+    { name: 'Guilherme Lima', role: 'Fundador e CTO', img: 'guilherme.JPG' }
   ];
 
   return (
@@ -90,7 +90,7 @@ const AboutUs = () => {
                 ) : (
                   <div className="relative rounded-[40px] overflow-hidden shadow-2xl">
                     <img 
-                      src="/resources/images/team.JPG" 
+                      src="team.JPG" 
                       alt="Team Work" 
                       className="w-full aspect-video object-cover"
                     />
