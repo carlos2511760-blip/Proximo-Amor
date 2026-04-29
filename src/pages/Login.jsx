@@ -1,19 +1,24 @@
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
+<<<<<<< Updated upstream
 import { useLanguage } from '../contexts/LanguageContext';
 import { supabase } from '../supabase';
 import Toast from '../components/Toast';
 import Layout from '../components/layout/Layout';
+=======
+import { Mail, Lock, Eye, EyeOff } from 'lucide-react';
+import { useLanguage } from '../contexts/LanguageContext';
+import { supabase } from '../supabase';
+import Toast from '../components/Toast';
+>>>>>>> Stashed changes
 
 const Login = () => {
   const { t } = useLanguage();
   const navigate = useNavigate();
   const [loading, setLoading] = useState(false);
+  const [showPass, setShowPass] = useState(false);
   const [toast, setToast] = useState({ message: '', type: 'error' });
-  const [formData, setFormData] = useState({
-    email: '',
-    password: ''
-  });
+  const [formData, setFormData] = useState({ email: '', password: '' });
 
   const showToast = (message, type = 'error') => setToast({ message, type });
   const closeToast = () => setToast({ message: '', type: 'error' });
@@ -32,27 +37,15 @@ const Login = () => {
     e.preventDefault();
     setLoading(true);
     closeToast();
-
     try {
       const { data: authData, error } = await supabase.auth.signInWithPassword({
         email: formData.email,
         password: formData.password,
       });
-
       if (error) throw error;
-
-      // Busca no banco se a pessoa é ONG ou Voluntário
       const { data: profile } = await supabase
-        .from('profiles')
-        .select('role')
-        .eq('id', authData.user.id)
-        .single();
-
-      if (profile?.role === 'ong') {
-        navigate('/ong/dashboard');
-      } else {
-        navigate('/voluntario/dashboard');
-      }
+        .from('profiles').select('role').eq('id', authData.user.id).single();
+      navigate(profile?.role === 'ong' ? '/ong/dashboard' : '/voluntario/dashboard');
     } catch (error) {
       showToast(traduzirErro(error.message));
     } finally {
@@ -61,64 +54,69 @@ const Login = () => {
   };
 
   return (
-    <Layout>
+    <div className="auth-page">
       <Toast message={toast.message} type={toast.type} onClose={closeToast} />
-      <div className="min-h-[80vh] flex items-center justify-center py-20 bg-bg-main">
-        <div className="bg-white p-12 rounded-[40px] shadow-2xl w-full max-w-lg border border-slate-100 animate-in">
-          <div className="text-center mb-10">
-            <h2 className="text-4xl font-bold text-navy mb-3">{t('auth.loginTitle')}</h2>
-            <p className="text-text-muted">{t('auth.loginSub')}</p>
-          </div>
-          
-          <form className="flex flex-col gap-6" onSubmit={handleLogin}>
-            <div className="flex flex-col gap-2">
-              <label className="text-sm font-bold text-navy ml-1">{t('auth.email')}</label>
-              <input 
-                type="email" 
-                placeholder="seu@email.com" 
-                className="w-full px-6 py-4 rounded-2xl bg-slate-50 border border-slate-100 outline-none focus:border-primary transition-all text-navy"
-                required 
-                value={formData.email}
-                onChange={(e) => setFormData({...formData, email: e.target.value})}
-              />
-            </div>
-            <div className="flex flex-col gap-2">
-              <label className="text-sm font-bold text-navy ml-1">{t('auth.password')}</label>
-              <input 
-                type="password" 
-                placeholder="••••••••" 
-                className="w-full px-6 py-4 rounded-2xl bg-slate-50 border border-slate-100 outline-none focus:border-primary transition-all text-navy"
-                required 
-                value={formData.password}
-                onChange={(e) => setFormData({...formData, password: e.target.value})}
-              />
-            </div>
-            
-            <div className="flex items-center justify-between text-sm px-1">
-              <label className="flex items-center gap-2 cursor-pointer text-text-muted">
-                <input type="checkbox" className="w-4 h-4 rounded border-slate-300 accent-primary" /> 
-                {t('auth.remember')}
-              </label>
-              <a href="#" className="font-bold text-primary hover:underline">{t('auth.forgot')}</a>
-            </div>
+      <div className="auth-card">
+        <div className="auth-logo">
+          <img src="/favicon.svg" alt="Próximo Amor" className="auth-logo-img" />
+        </div>
+        <h2 className="auth-title">{t('auth.loginTitle')}</h2>
+        <p className="auth-subtitle">{t('auth.loginSub')}</p>
 
-            <button 
-              type="submit" 
-              className="btn btn-primary w-full py-4 text-lg mt-4" 
-              disabled={loading}
-            >
-              {loading ? 'Entrando...' : t('auth.enter')}
-            </button>
-          </form>
-          
-          <div className="mt-10 pt-8 border-t border-slate-50 text-center">
-            <p className="text-text-muted">
-              {t('auth.noAccount')} <Link to="/register-options" className="font-bold text-primary hover:underline ml-1">{t('auth.signup')}</Link>
-            </p>
+        <form className="auth-form-inner" onSubmit={handleLogin}>
+          <div className="auth-field">
+            <label htmlFor="login-email" className="auth-label">
+              <Mail size={16} className="auth-label-icon" /> {t('auth.email')}
+            </label>
+            <input
+              id="login-email"
+              type="email"
+              placeholder="seu@email.com"
+              className="auth-input"
+              required
+              value={formData.email}
+              onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+            />
           </div>
+
+          <div className="auth-field">
+            <label htmlFor="login-password" className="auth-label">
+              <Lock size={16} className="auth-label-icon" /> {t('auth.password')}
+            </label>
+            <div className="auth-input-wrap">
+              <input
+                id="login-password"
+                type={showPass ? 'text' : 'password'}
+                placeholder="••••••••"
+                className="auth-input"
+                required
+                value={formData.password}
+                onChange={(e) => setFormData({ ...formData, password: e.target.value })}
+              />
+              <button type="button" className="auth-eye" onClick={() => setShowPass(!showPass)} aria-label="Mostrar senha">
+                {showPass ? <EyeOff size={18} /> : <Eye size={18} />}
+              </button>
+            </div>
+          </div>
+
+          <div className="auth-options">
+            <label className="auth-remember">
+              <input type="checkbox" className="auth-checkbox" /> {t('auth.remember')}
+            </label>
+            <a href="#" className="auth-forgot">{t('auth.forgot')}</a>
+          </div>
+
+          <button type="submit" className="auth-submit-btn" disabled={loading}>
+            {loading ? 'Entrando...' : t('auth.enter')}
+          </button>
+        </form>
+
+        <div className="auth-footer-text">
+          {t('auth.noAccount')}
+          <Link to="/cadastro/voluntario" className="auth-link"> {t('auth.signup')}</Link>
         </div>
       </div>
-    </Layout>
+    </div>
   );
 };
 
