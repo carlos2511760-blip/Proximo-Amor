@@ -1,10 +1,16 @@
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
+<<<<<<< Updated upstream
 import { useLanguage } from '../contexts/LanguageContext';
 import { supabase } from '../supabase';
 import Toast from '../components/Toast';
 import Layout from '../components/layout/Layout';
+=======
 import { Mail, Lock, Eye, EyeOff } from 'lucide-react';
+import { useLanguage } from '../contexts/LanguageContext';
+import { supabase } from '../supabase';
+import Toast from '../components/Toast';
+>>>>>>> Stashed changes
 
 const Login = () => {
   const { t } = useLanguage();
