@@ -1,10 +1,12 @@
 import React from 'react';
 import { MapPin, Calendar } from 'lucide-react';
+import { useTranslation } from 'react-i18next';
 import './LandingPage.css';
 
 const base = import.meta.env.BASE_URL;
 
 const JobsSection = () => {
+  const { t } = useTranslation();
   const jobs = [
     { 
       img: `${base}jardim.jpeg`, 
@@ -43,9 +45,9 @@ const JobsSection = () => {
   return (
     <section className="jobs-section" style={{ backgroundImage: `url(${base}leaves.png)` }}>
       <div className="container jobs-container">
-        <h2 className="jobs-title">Raízes da semana</h2>
+        <h2 className="jobs-title">{t('jobs_title')}</h2>
         <p className="jobs-subtitle">
-          Veja as oportunidades selecionadas pelo Próximo Amor para esta semana!
+          {t('jobs_subtitle')}
         </p>
         
         <div className="jobs-grid">
@@ -54,7 +56,7 @@ const JobsSection = () => {
               <img src={job.img} alt={job.title} className="job-image" />
               <div className="job-content">
                 <h3 className="job-title">{job.title}</h3>
-                <p className="job-author">por {job.author}</p>
+                <p className="job-author">{t('job_by')} {job.author}</p>
                 <p className="job-desc">{job.desc}</p>
                 
                 <div className="job-footer">

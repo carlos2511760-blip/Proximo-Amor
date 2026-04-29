@@ -7,13 +7,18 @@ const resources = {
     translation: {
       "welcome": "Bem-vindo ao Próximo Amor",
       "mission": "Conectando corações e talentos para um mundo melhor.",
-      "hero_title": "O seu próximo gesto de amor começa aqui.",
-      "hero_subtitle": "Encontre ONGs que precisam do seu talento ou poste vagas para encontrar os voluntários ideais.",
-      "cta_volunteer": "Quero ser Voluntário",
-      "cta_ong": "Sou uma ONG",
+      "hero_title": "Somos uma iniciativa dedicada a transformar vidas por meio do voluntariado.",
+      "hero_subtitle": "Faça parte desse amor hoje!",
+      "hero_search_placeholder": "Busque por oportunidades de impacto...",
       "nav_home": "Início",
       "nav_jobs": "Vagas",
       "nav_login": "Entrar",
+      "nav_about": "Quem somos",
+      "nav_faq": "FAQ",
+      "nav_root": "Enraizar",
+      "cta_volunteer_long": "Quero ser voluntário!",
+      "cta_ong_long": "Quero encontrar voluntários!",
+      "cta_donate": "Doe agora",
       "footer_text": "© 2024 Próximo Amor. Impactando vidas juntos.",
       "features": "Funcionalidades",
       "features_sub": "Tudo o que você precisa para gerenciar e encontrar oportunidades de impacto social.",
@@ -22,7 +27,10 @@ const resources = {
       "feature_jobs_title": "Busca Inteligente",
       "feature_jobs_desc": "Filtre por categoria, localização e tempo de dedicação.",
       "feature_ong_title": "Gestão de Vagas",
-      "feature_ong_desc": "Crie e gerencie oportunidades com facilidade."
+      "feature_ong_desc": "Crie e gerencie oportunidades com facilidade.",
+      "jobs_title": "Raízes da semana",
+      "jobs_subtitle": "Veja as oportunidades selecionadas pelo Próximo Amor para esta semana!",
+      "job_by": "por"
     }
   },
   en: {
