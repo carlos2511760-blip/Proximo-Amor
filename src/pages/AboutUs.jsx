@@ -7,8 +7,10 @@ const tabContent = {
   Projeto: {
     title: 'Sobre o Próximo Amor',
     paragraphs: [
-      'Somos uma iniciativa com o objetivo de conectar pessoas que desejam participar de pequenas causas que geram grandes impactos.',
-      'Representados por uma árvore, símbolo da conexão entre todos. Nela, o tronco representa o Próximo Amor, os galhos são as empresas cadastradas e as folhas simbolizam os usuários dispostos a promover mudanças. Nisso, se constrói as raízes, o que fortalece todo o nosso projeto: as mudanças que toda essa junção faz nas vidas das pessoas.',
+      'Somos uma iniciativa privada com o objetivo de conectar pessoas que desejam participar de pequenas causas que geram grandes impactos.',
+      'Somos representados por uma árvore, símbolo da conexão entre todos. Nela, o tronco representa o Próximo Amor, os galhos são as empresas cadastradas e as folhas simbolizam os usuários dispostos a promover mudanças.',
+      'O projeto nasceu da vontade de gerar transformações sociais, incentivando a solidariedade e o engajamento coletivo. Nossa missão é conectar pessoas dispostas a ajudar com empresas parceiras inscritas em nosso programa.',
+      'Em nosso site, empresas e voluntários se encontram por meio de vagas selecionadas, facilitando essa conexão. Acreditamos na mudança e na solidariedade. Junte-se a nós e faça parte dessa grande família.',
     ]
   },
   Fundadores: {
@@ -26,7 +28,6 @@ const tabContent = {
   Objetivo: {
     title: 'Onde Queremos Chegar',
     paragraphs: [
-      'Somos uma iniciativa com o objetivo de conectar pessoas que desejam participar de pequenas causas que geram grandes impactos.',
       'Buscamos ser a maior plataforma de voluntariado do Brasil, conectando milhares de voluntários a centenas de ONGs e projetos sociais em todo o país.',
     ]
   }
