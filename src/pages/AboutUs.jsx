@@ -33,8 +33,8 @@ const tabContent = {
 };
 
 const team = [
-  { name: 'Flávio Azevedo', role: 'Fundador e CEO', img: '/flavio.JPG' },
-  { name: 'Guilherme Lima', role: 'Fundador e CTO', img: '/guilherme.JPG' },
+  { name: 'Flávio Azevedo', role: 'Fundador e CEO', img: 'flavio.JPG' },
+  { name: 'Guilherme Lima', role: 'Fundador e CTO', img: 'guilherme.JPG' },
 ];
 
 const values = [
@@ -54,7 +54,7 @@ const AboutUs = () => {
 
       {/* Hero */}
       <section className="about-hero">
-        <img src="/team.JPG" alt="Equipe Próximo Amor" className="about-hero-img" />
+        <img src="team.JPG" alt="Equipe Próximo Amor" className="about-hero-img" />
         <div className="about-hero-overlay" />
         <div className="about-hero-content">
           <h1 className="about-hero-title">Sobre Nós</h1>

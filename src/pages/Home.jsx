@@ -17,7 +17,7 @@ const Home = () => {
       desc: "Busca-se voluntários para montar um jardim comunitário em nosso bairro para fortalecer o hortifruti da região!",
       location: "Guarulhos, São Paulo",
       date: "21/04/2026",
-      image: "/jardim.jpeg",
+      image: "jardim.jpeg",
       category: "Meio Ambiente"
     },
     {
@@ -27,7 +27,7 @@ const Home = () => {
       desc: "Venha fazer pintura de rosto e ajudar a criar momentos felizes em nossa comunidade!",
       location: "Osasco, São Paulo",
       date: "23/04/2026",
-      image: "/pintura.webp",
+      image: "pintura.webp",
       category: "Cultura"
     },
     {
@@ -37,7 +37,7 @@ const Home = () => {
       desc: "Precisamos de voluntários para entregar alimentos na comunidade México 70 e espalhar cuidado.",
       location: "São Paulo, São Paulo",
       date: "28/04/2026",
-      image: "/alimento.webp",
+      image: "alimento.webp",
       category: "Social"
     }
   ];
@@ -51,7 +51,7 @@ const Home = () => {
         {/* BG Image with Overlay */}
         <div className="absolute inset-0 z-0">
           <img 
-            src="/homeBG.jpeg" 
+            src="homeBG.jpeg" 
             alt="Voluntariado" 
             className="w-full h-full object-cover"
           />
