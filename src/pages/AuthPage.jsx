@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { Heart, ArrowLeft, Mail, Lock, User, Building2 } from 'lucide-react';
+import './AuthPage.css';
 
 const AuthPage = () => {
   const { t } = useTranslation();
@@ -24,68 +25,68 @@ const AuthPage = () => {
   };
 
   return (
-    <div style={{ minHeight: '100vh', display: 'flex', alignItems: 'center', justifyContent: 'center', backgroundColor: 'var(--muted)', padding: '1rem' }}>
+    <div className="auth-page">
       <button 
         onClick={() => navigate('/')}
-        style={{ position: 'absolute', top: '2rem', left: '2rem', display: 'flex', alignItems: 'center', gap: '0.5rem', background: 'none', color: 'var(--primary)', fontWeight: '600' }}
+        className="auth-back-btn"
       >
         <ArrowLeft size={20} /> Voltar ao início
       </button>
 
-      <div className="glass" style={{ width: '100%', maxWidth: '450px', padding: '3rem', borderRadius: '2rem', backgroundColor: 'var(--card)', boxShadow: 'var(--shadow)' }}>
-        <div style={{ textAlign: 'center', marginBottom: '2.5rem' }}>
-          <div style={{ display: 'inline-flex', alignItems: 'center', gap: '0.5rem', fontSize: '1.5rem', fontWeight: 'bold', color: 'var(--primary)', marginBottom: '1rem' }}>
+      <div className="glass auth-card">
+        <div className="auth-header">
+          <div className="auth-logo">
             <Heart fill="var(--primary)" size={32} />
             <span>Próximo Amor</span>
           </div>
-          <h2 style={{ fontSize: '1.75rem', fontWeight: '700' }}>{isLogin ? 'Bem-vindo de volta' : 'Criar nova conta'}</h2>
-          <p style={{ color: 'var(--muted-foreground)' }}>{isLogin ? 'Entre para continuar impactando vidas' : 'Junte-se à nossa rede de solidariedade'}</p>
+          <h2 className="auth-title">{isLogin ? 'Bem-vindo de volta' : 'Criar nova conta'}</h2>
+          <p className="auth-subtitle">{isLogin ? 'Entre para continuar impactando vidas' : 'Junte-se à nossa rede de solidariedade'}</p>
         </div>
 
         {!isLogin && (
-          <div style={{ display: 'flex', gap: '1rem', marginBottom: '2rem' }}>
+          <div className="auth-roles">
             <button 
               onClick={() => setRole('volunteer')}
-              style={{ flex: 1, padding: '1rem', borderRadius: '1rem', border: role === 'volunteer' ? '2px solid var(--primary)' : '2px solid var(--border)', backgroundColor: role === 'volunteer' ? 'rgba(13, 148, 136, 0.05)' : 'transparent', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '0.5rem', transition: 'all 0.2s' }}
+              className={`auth-role-btn ${role === 'volunteer' ? 'active' : ''}`}
             >
               <User size={24} color={role === 'volunteer' ? 'var(--primary)' : 'var(--muted-foreground)'} />
-              <span style={{ fontWeight: '600', color: role === 'volunteer' ? 'var(--primary)' : 'var(--muted-foreground)' }}>Voluntário</span>
+              <span className="auth-role-text">Voluntário</span>
             </button>
             <button 
               onClick={() => setRole('ong')}
-              style={{ flex: 1, padding: '1rem', borderRadius: '1rem', border: role === 'ong' ? '2px solid var(--primary)' : '2px solid var(--border)', backgroundColor: role === 'ong' ? 'rgba(13, 148, 136, 0.05)' : 'transparent', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '0.5rem', transition: 'all 0.2s' }}
+              className={`auth-role-btn ${role === 'ong' ? 'active' : ''}`}
             >
               <Building2 size={24} color={role === 'ong' ? 'var(--primary)' : 'var(--muted-foreground)'} />
-              <span style={{ fontWeight: '600', color: role === 'ong' ? 'var(--primary)' : 'var(--muted-foreground)' }}>ONG</span>
+              <span className="auth-role-text">ONG</span>
             </button>
           </div>
         )}
 
-        <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: '1.25rem' }}>
+        <form onSubmit={handleSubmit} className="auth-form">
           {!isLogin && (
-            <div style={{ position: 'relative' }}>
-              <User size={18} style={{ position: 'absolute', left: '1rem', top: '50%', transform: 'translateY(-50%)', color: 'var(--muted-foreground)' }} />
-              <input type="text" placeholder="Seu nome completo" required style={{ width: '100%', padding: '0.75rem 1rem 0.75rem 3rem', borderRadius: '0.75rem', border: '1px solid var(--border)', outline: 'none' }} />
+            <div className="input-group">
+              <User size={18} className="input-icon" />
+              <input type="text" placeholder="Seu nome completo" required className="auth-input" />
             </div>
           )}
-          <div style={{ position: 'relative' }}>
-            <Mail size={18} style={{ position: 'absolute', left: '1rem', top: '50%', transform: 'translateY(-50%)', color: 'var(--muted-foreground)' }} />
-            <input type="email" placeholder="Seu e-mail" required style={{ width: '100%', padding: '0.75rem 1rem 0.75rem 3rem', borderRadius: '0.75rem', border: '1px solid var(--border)', outline: 'none' }} />
+          <div className="input-group">
+            <Mail size={18} className="input-icon" />
+            <input type="email" placeholder="Seu e-mail" required className="auth-input" />
           </div>
-          <div style={{ position: 'relative' }}>
-            <Lock size={18} style={{ position: 'absolute', left: '1rem', top: '50%', transform: 'translateY(-50%)', color: 'var(--muted-foreground)' }} />
-            <input type="password" placeholder="Sua senha" required style={{ width: '100%', padding: '0.75rem 1rem 0.75rem 3rem', borderRadius: '0.75rem', border: '1px solid var(--border)', outline: 'none' }} />
+          <div className="input-group">
+            <Lock size={18} className="input-icon" />
+            <input type="password" placeholder="Sua senha" required className="auth-input" />
           </div>
           
-          <button type="submit" style={{ backgroundColor: 'var(--primary)', color: 'white', padding: '1rem', borderRadius: '0.75rem', fontWeight: '700', fontSize: '1rem', marginTop: '1rem', boxShadow: '0 4px 6px -1px rgba(13, 148, 136, 0.4)' }}>
+          <button type="submit" className="auth-submit-btn">
             {isLogin ? 'Entrar' : 'Criar conta'}
           </button>
         </form>
 
-        <div style={{ textAlign: 'center', marginTop: '2rem' }}>
-          <p style={{ color: 'var(--muted-foreground)' }}>
-            {isLogin ? 'Ainda não tem conta?' : 'Já possui uma conta?'} {' '}
-            <button onClick={() => setIsLogin(!isLogin)} style={{ background: 'none', color: 'var(--primary)', fontWeight: '700' }}>
+        <div className="auth-footer">
+          <p className="auth-footer-text">
+            {isLogin ? 'Ainda não tem conta?' : 'Já possui uma conta?'}
+            <button onClick={() => setIsLogin(!isLogin)} className="auth-toggle-btn">
               {isLogin ? 'Cadastre-se' : 'Faça login'}
             </button>
           </p>
