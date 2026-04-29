@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 import { useLanguage } from '../contexts/LanguageContext';
 import { Search, MapPin, Calendar, Users, Heart, ArrowRight, Filter } from 'lucide-react';
 import Header from '../components/layout/Header';
