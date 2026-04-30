@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
+import { User } from 'lucide-react';
 import { useLanguage } from '../contexts/LanguageContext';
 import { supabase } from '../supabase';
 import Toast from '../components/Toast';
@@ -55,51 +56,56 @@ const RegisterVolunteer = () => {
   };
 
   return (
-    <div className="auth-page">
+    <div className="flex min-h-screen items-center justify-center bg-white py-12 px-4 sm:px-6 lg:px-8">
       <Toast message={toast.message} type={toast.type} onClose={closeToast} />
-      <div className="auth-card auth-card-wide">
-        <div className="auth-badge auth-badge-vol">Voluntário</div>
-        <h2 className="auth-title">{t('auth.regVolTitle')}</h2>
-        <p className="auth-subtitle">{t('auth.regVolSub')}</p>
+      
+      <div className="w-full max-w-md space-y-8 bg-white p-10 rounded-[40px] border-2 border-black shadow-[0_20px_50px_rgba(0,0,0,0.1)]">
+        <div className="text-center">
+          <div className="flex justify-center mb-6">
+            <div className="w-16 h-16 bg-[#3B82F6] rounded-full flex items-center justify-center text-white shadow-lg">
+              <User size={36} fill="currentColor" />
+            </div>
+          </div>
+          <h2 className="text-4xl font-extrabold text-navy tracking-tight mb-2">Seja um voluntário</h2>
+          <p className="text-lg font-medium text-text-muted">Dados da Conta</p>
+        </div>
 
-        <form className="auth-form-inner" onSubmit={handleSubmit}>
-          <div className="auth-row">
-            <div className="auth-field">
-              <label htmlFor="vol-name" className="auth-label">{t('auth.fullName')}</label>
-              <input id="vol-name" type="text" placeholder="Seu nome completo" className="auth-input" required
+        <form className="mt-8 space-y-6" onSubmit={handleSubmit}>
+          <div className="space-y-4">
+            <div>
+              <label htmlFor="vol-name" className="block text-lg font-bold text-navy mb-1">Nome Completo</label>
+              <input id="vol-name" type="text" placeholder="Insira seu nome aqui" className="w-full px-6 py-3 rounded-full border-2 border-black text-navy focus:ring-2 focus:ring-primary focus:outline-none transition-all" required
                 value={formData.name} onChange={(e) => setFormData({ ...formData, name: e.target.value })} />
             </div>
-            <div className="auth-field">
-              <label htmlFor="vol-email" className="auth-label">{t('auth.email')}</label>
-              <input id="vol-email" type="email" placeholder="seu@email.com" className="auth-input" required
+            <div>
+              <label htmlFor="vol-email" className="block text-lg font-bold text-navy mb-1">E-mail</label>
+              <input id="vol-email" type="email" placeholder="seu@email.com" className="w-full px-6 py-3 rounded-full border-2 border-black text-navy focus:ring-2 focus:ring-primary focus:outline-none transition-all" required
                 value={formData.email} onChange={(e) => setFormData({ ...formData, email: e.target.value })} />
             </div>
-          </div>
-          <div className="auth-field">
-            <label htmlFor="skills" className="auth-label">{t('auth.skills')}</label>
-            <input id="skills" type="text" placeholder={t('auth.skillsPlaceholder')} className="auth-input"
-              value={formData.skills} onChange={(e) => setFormData({ ...formData, skills: e.target.value })} />
-          </div>
-          <div className="auth-row">
-            <div className="auth-field">
-              <label htmlFor="vol-password" className="auth-label">{t('auth.password')}</label>
-              <input id="vol-password" type="password" placeholder="••••••••" className="auth-input" required
+            <div>
+              <label htmlFor="vol-password" className="block text-lg font-bold text-navy mb-1">Senha</label>
+              <input id="vol-password" type="password" placeholder="••••••••" className="w-full px-6 py-3 rounded-full border-2 border-black text-navy focus:ring-2 focus:ring-primary focus:outline-none transition-all" required
                 value={formData.password} onChange={(e) => setFormData({ ...formData, password: e.target.value })} />
             </div>
-            <div className="auth-field">
-              <label htmlFor="vol-confirm" className="auth-label">{t('auth.confirmPass')}</label>
-              <input id="vol-confirm" type="password" placeholder="••••••••" className="auth-input" required
+            <div>
+              <label htmlFor="vol-confirm" className="block text-lg font-bold text-navy mb-1">Confirme sua senha</label>
+              <input id="vol-confirm" type="password" placeholder="••••••••" className="w-full px-6 py-3 rounded-full border-2 border-black text-navy focus:ring-2 focus:ring-primary focus:outline-none transition-all" required
                 value={formData.confirmPassword} onChange={(e) => setFormData({ ...formData, confirmPassword: e.target.value })} />
             </div>
           </div>
-          <button type="submit" className="auth-submit-btn" disabled={loading}>
-            {loading ? t('auth.loading') : t('auth.finishReg')}
-          </button>
+
+          <div>
+            <button type="submit" className="group relative w-full flex justify-center py-4 px-4 border border-transparent text-xl font-bold rounded-full text-white bg-[#40C1FD] hover:bg-[#35b0e8] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#40C1FD] transition-all shadow-lg" disabled={loading}>
+              {loading ? t('auth.loading') : 'Avançar'}
+            </button>
+          </div>
         </form>
 
-        <div className="auth-footer-text">
-          {t('auth.alreadyAccount')}
-          <Link to="/login" className="auth-link"> {t('auth.loginLink')}</Link>
+        <div className="text-center mt-6">
+          <p className="text-sm text-text-muted">
+            {t('auth.alreadyAccount')}
+            <Link to="/login" className="font-bold text-primary hover:underline ml-1"> {t('auth.loginLink')}</Link>
+          </p>
         </div>
       </div>
     </div>

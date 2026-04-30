@@ -19,22 +19,25 @@ const Header = () => {
   }, []);
 
   const navLinks = [
-    { name: t('nav.enraizar'), path: '/' },
+    { name: t('nav.enraizar'), path: '/vagas' },
     { name: t('nav.about'), path: '/sobre' },
     { name: t('nav.faq'), path: '/faq' },
-    { name: t('nav.quero_voluntario'), path: '/vagas' },
+    { name: t('nav.quero_voluntario'), path: '/cadastro/voluntario' },
     { name: t('nav.quero_vagas'), path: '/cadastro/ong' },
   ];
 
   return (
-    <header className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 ${isScrolled ? 'glass py-3 shadow-md' : 'bg-transparent py-5'}`}>
+    <header 
+      className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 ${isScrolled ? 'py-3 shadow-md' : 'py-5'}`}
+      style={{ backgroundColor: '#2ACDBE' }}
+    >
       <div className="container flex items-center justify-between">
         {/* Logo */}
         <Link to="/" className="flex items-center gap-3 no-underline">
-          <div className="w-10 h-10 bg-primary rounded-xl flex items-center justify-center text-white shadow-lg shadow-primary/20">
-            <Heart size={24} fill="currentColor" />
+          <div className="w-12 h-12 flex items-center justify-center transition-transform hover:scale-110">
+            <img src="icons/logoSymChroma.png" alt="Proximo Amor Logo" className="w-full h-full object-contain" />
           </div>
-          <span className={`text-xl font-bold tracking-tight ${isScrolled ? 'text-navy' : 'text-navy'}`}>
+          <span className="text-xl font-bold tracking-tight text-navy">
             Próximo Amor
           </span>
         </Link>
@@ -45,8 +48,8 @@ const Header = () => {
             <Link
               key={link.name}
               to={link.path}
-              className={`text-[0.95rem] font-semibold no-underline transition-colors hover:text-primary ${
-                location.pathname === link.path ? 'text-primary' : 'text-navy'
+              className={`text-[0.95rem] font-bold no-underline transition-colors hover:text-white ${
+                location.pathname === link.path ? 'text-white underline underline-offset-8 decoration-2' : 'text-navy'
               }`}
             >
               {link.name}
@@ -60,14 +63,14 @@ const Header = () => {
           <div className="relative">
             <button 
               onClick={() => setLangMenuOpen(!langMenuOpen)}
-              className="flex items-center gap-2 p-2 rounded-full hover:bg-slate-100 transition-colors"
+              className="flex items-center gap-2 p-2 rounded-full hover:bg-white/20 transition-colors"
             >
               <Globe size={20} className="text-navy" />
               <span className="uppercase text-xs font-bold text-navy">{language.split('-')[0]}</span>
             </button>
             
             {langMenuOpen && (
-              <div className="absolute top-full right-0 mt-2 w-32 bg-white rounded-2xl shadow-xl border border-slate-100 overflow-hidden py-2 animate-in fade-in slide-in-from-top-2 duration-200">
+              <div className="absolute top-full right-0 mt-2 w-32 bg-white rounded-2xl shadow-xl border border-slate-100 overflow-hidden py-2">
                 <button onClick={() => { setLanguage('pt-br'); setLangMenuOpen(false); }} className="w-full text-left px-4 py-2 text-sm font-medium hover:bg-slate-50 transition-colors">Português</button>
                 <button onClick={() => { setLanguage('en'); setLangMenuOpen(false); }} className="w-full text-left px-4 py-2 text-sm font-medium hover:bg-slate-50 transition-colors">English</button>
                 <button onClick={() => { setLanguage('es'); setLangMenuOpen(false); }} className="w-full text-left px-4 py-2 text-sm font-medium hover:bg-slate-50 transition-colors">Español</button>
@@ -75,10 +78,10 @@ const Header = () => {
             )}
           </div>
 
-          <Link to="/login" className="btn btn-secondary border-none bg-transparent hover:bg-slate-100 py-2">
+          <Link to="/login" className="btn btn-secondary border-navy text-navy hover:bg-navy hover:text-white py-2">
             {t('nav.login')}
           </Link>
-          <Link to="/doar" className="btn btn-primary py-2 px-6">
+          <Link to="/doar" className="btn bg-navy text-white hover:bg-navy/80 py-2 px-6 rounded-full font-bold transition-all shadow-lg">
             {t('nav.doe_agora')}
           </Link>
         </div>

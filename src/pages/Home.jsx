@@ -44,7 +44,6 @@ const Home = () => {
 
   return (
     <div className="min-h-screen bg-bg-main">
-      <Header />
       
       {/* Hero Section */}
       <section className="relative h-[85vh] flex items-center justify-center pt-20 overflow-hidden">
@@ -116,7 +115,7 @@ const Home = () => {
             </Link>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg-grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {raizesDaSemana.map((raiz) => (
               <div key={raiz.id} className="bg-white rounded-[32px] overflow-hidden shadow-md hover:shadow-xl transition-all group border border-slate-100">
                 <div className="h-64 relative overflow-hidden">
@@ -167,10 +166,10 @@ const Home = () => {
 
           <div className="grid grid-cols-1 md-grid-cols-2 lg-grid-cols-4 gap-8">
              {[
-               { label: "Voluntários ativos", value: "2.4k+", icon: <Users size={32} /> },
-               { label: "ONGs parceiras", value: "150+", icon: <Filter size={32} /> },
-               { label: "Horas doadas", value: "15k+", icon: <Calendar size={32} /> },
-               { label: "Vidas impactadas", value: "10k+", icon: <Heart size={32} /> }
+                { label: "Voluntários ativos", value: "2.4k+", icon: <Users size={32} /> },
+                { label: "ONGs parceiras", value: "150+", icon: <Filter size={32} /> },
+                { label: "Horas doadas", value: "15k+", icon: <Calendar size={32} /> },
+                { label: "Vidas impactadas", value: "10k+", icon: <Heart size={32} /> }
              ].map((stat, i) => (
                <div key={i} className="bg-white-5 border border-white-10 p-8 rounded-[32px] text-center flex flex-col items-center gap-4 hover:bg-white-10 transition-all">
                  <div className="text-primary bg-primary-10 p-4 rounded-2xl">{stat.icon}</div>
@@ -181,8 +180,6 @@ const Home = () => {
           </div>
         </div>
       </section>
-
-      <Footer />
     </div>
   );
 };

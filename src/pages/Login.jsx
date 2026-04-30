@@ -1,16 +1,9 @@
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-<<<<<<< Updated upstream
+import { Mail, Lock, Eye, EyeOff, LogIn } from 'lucide-react';
 import { useLanguage } from '../contexts/LanguageContext';
 import { supabase } from '../supabase';
 import Toast from '../components/Toast';
-import Layout from '../components/layout/Layout';
-=======
-import { Mail, Lock, Eye, EyeOff } from 'lucide-react';
-import { useLanguage } from '../contexts/LanguageContext';
-import { supabase } from '../supabase';
-import Toast from '../components/Toast';
->>>>>>> Stashed changes
 
 const Login = () => {
   const { t } = useLanguage();
@@ -54,66 +47,90 @@ const Login = () => {
   };
 
   return (
-    <div className="auth-page">
+    <div className="flex min-h-screen items-center justify-center bg-white py-12 px-4 sm:px-6 lg:px-8">
       <Toast message={toast.message} type={toast.type} onClose={closeToast} />
-      <div className="auth-card">
-        <div className="auth-logo">
-          <img src="/favicon.svg" alt="Próximo Amor" className="auth-logo-img" />
-        </div>
-        <h2 className="auth-title">{t('auth.loginTitle')}</h2>
-        <p className="auth-subtitle">{t('auth.loginSub')}</p>
-
-        <form className="auth-form-inner" onSubmit={handleLogin}>
-          <div className="auth-field">
-            <label htmlFor="login-email" className="auth-label">
-              <Mail size={16} className="auth-label-icon" /> {t('auth.email')}
-            </label>
-            <input
-              id="login-email"
-              type="email"
-              placeholder="seu@email.com"
-              className="auth-input"
-              required
-              value={formData.email}
-              onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-            />
+      
+      <div className="w-full max-w-md space-y-8 bg-white p-10 rounded-[40px] border-2 border-black shadow-[0_20px_50px_rgba(0,0,0,0.1)]">
+        <div className="text-center">
+          <div className="flex justify-center mb-6">
+            <div className="w-16 h-16 bg-[#3B82F6] rounded-full flex items-center justify-center text-white shadow-lg">
+              <LogIn size={36} fill="currentColor" />
+            </div>
           </div>
+          <h2 className="text-4xl font-extrabold text-navy tracking-tight mb-2">{t('auth.loginTitle')}</h2>
+          <p className="text-lg font-medium text-text-muted">{t('auth.loginSub')}</p>
+        </div>
 
-          <div className="auth-field">
-            <label htmlFor="login-password" className="auth-label">
-              <Lock size={16} className="auth-label-icon" /> {t('auth.password')}
-            </label>
-            <div className="auth-input-wrap">
-              <input
-                id="login-password"
-                type={showPass ? 'text' : 'password'}
-                placeholder="••••••••"
-                className="auth-input"
-                required
-                value={formData.password}
-                onChange={(e) => setFormData({ ...formData, password: e.target.value })}
-              />
-              <button type="button" className="auth-eye" onClick={() => setShowPass(!showPass)} aria-label="Mostrar senha">
-                {showPass ? <EyeOff size={18} /> : <Eye size={18} />}
-              </button>
+        <form className="mt-8 space-y-6" onSubmit={handleLogin}>
+          <div className="space-y-4">
+            <div>
+              <label htmlFor="login-email" className="block text-lg font-bold text-navy mb-1">
+                E-mail
+              </label>
+              <div className="relative">
+                <div className="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
+                  <Mail className="h-5 w-5 text-gray-400" />
+                </div>
+                <input
+                  id="login-email"
+                  type="email"
+                  placeholder="seu@email.com"
+                  className="w-full pl-12 pr-6 py-3 rounded-full border-2 border-black text-navy focus:ring-2 focus:ring-primary focus:outline-none transition-all"
+                  required
+                  value={formData.email}
+                  onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                />
+              </div>
+            </div>
+
+            <div>
+              <label htmlFor="login-password" className="block text-lg font-bold text-navy mb-1">
+                Senha
+              </label>
+              <div className="relative">
+                <div className="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
+                  <Lock className="h-5 w-5 text-gray-400" />
+                </div>
+                <input
+                  id="login-password"
+                  type={showPass ? 'text' : 'password'}
+                  placeholder="••••••••"
+                  className="w-full pl-12 pr-12 py-3 rounded-full border-2 border-black text-navy focus:ring-2 focus:ring-primary focus:outline-none transition-all"
+                  required
+                  value={formData.password}
+                  onChange={(e) => setFormData({ ...formData, password: e.target.value })}
+                />
+                <button 
+                  type="button" 
+                  className="absolute inset-y-0 right-0 pr-4 flex items-center text-gray-400 hover:text-navy transition-colors" 
+                  onClick={() => setShowPass(!showPass)}
+                >
+                  {showPass ? <EyeOff size={20} /> : <Eye size={20} />}
+                </button>
+              </div>
             </div>
           </div>
 
-          <div className="auth-options">
-            <label className="auth-remember">
-              <input type="checkbox" className="auth-checkbox" /> {t('auth.remember')}
-            </label>
-            <a href="#" className="auth-forgot">{t('auth.forgot')}</a>
+          <div className="flex items-center justify-between">
+            <div className="flex items-center">
+              <input type="checkbox" className="h-4 w-4 text-primary border-black rounded" />
+              <label className="ml-2 block text-sm text-text-muted">{t('auth.remember')}</label>
+            </div>
+            <a href="#" className="text-sm font-bold text-primary hover:underline">{t('auth.forgot')}</a>
           </div>
 
-          <button type="submit" className="auth-submit-btn" disabled={loading}>
-            {loading ? 'Entrando...' : t('auth.enter')}
-          </button>
+          <div>
+            <button type="submit" className="group relative w-full flex justify-center py-4 px-4 border border-transparent text-xl font-bold rounded-full text-white bg-[#40C1FD] hover:bg-[#35b0e8] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#40C1FD] transition-all shadow-lg" disabled={loading}>
+              {loading ? 'Entrando...' : t('auth.enter')}
+            </button>
+          </div>
         </form>
 
-        <div className="auth-footer-text">
-          {t('auth.noAccount')}
-          <Link to="/cadastro/voluntario" className="auth-link"> {t('auth.signup')}</Link>
+        <div className="text-center mt-6">
+          <p className="text-sm text-text-muted">
+            {t('auth.noAccount')}
+            <Link to="/cadastro" className="font-bold text-primary hover:underline ml-1">{t('auth.signup')}</Link>
+          </p>
         </div>
       </div>
     </div>

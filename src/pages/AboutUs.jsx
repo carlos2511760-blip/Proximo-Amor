@@ -34,8 +34,8 @@ const tabContent = {
 };
 
 const team = [
-  { name: 'Flávio Azevedo', role: 'Fundador e CEO', img: '/flavio.JPG' },
-  { name: 'Guilherme Lima', role: 'Fundador e CTO', img: '/guilherme.JPG' },
+  { name: 'Flávio Azevedo', role: 'Fundador e CEO', img: 'flavio.JPG' },
+  { name: 'Guilherme Lima', role: 'Fundador e CTO', img: 'guilherme.JPG' },
 ];
 
 const values = [
@@ -46,8 +46,6 @@ const values = [
 
 const AboutUs = () => {
   const [activeTab, setActiveTab] = useState('Projeto');
-  const [founderIdx, setFounderIdx] = useState(0);
-
   const content = tabContent[activeTab];
 
   return (
@@ -55,7 +53,7 @@ const AboutUs = () => {
 
       {/* Hero */}
       <section className="about-hero">
-        <img src="/team.JPG" alt="Equipe Próximo Amor" className="about-hero-img" />
+        <img src="team.JPG" alt="Equipe Próximo Amor" className="about-hero-img" />
         <div className="about-hero-overlay" />
         <div className="about-hero-content">
           <h1 className="about-hero-title">Sobre Nós</h1>
@@ -78,35 +76,25 @@ const AboutUs = () => {
         <div className="about-content-wrap">
 
           {activeTab === 'Fundadores' ? (
-            /* Founders Carousel */
-            <div className="about-founders">
-              <div className="about-founder-card">
-                <div className="about-founder-img-wrap">
-                  <img src={team[founderIdx].img} alt={team[founderIdx].name} className="about-founder-img" />
-                  <div className="about-founder-overlay">
-                    <h3 className="about-founder-name">{team[founderIdx].name}</h3>
-                    <p className="about-founder-role">{team[founderIdx].role}</p>
-                  </div>
-                  {founderIdx < team.length - 1 && (
-                    <button className="about-founder-arrow" onClick={() => setFounderIdx(founderIdx + 1)} aria-label="Próximo">
-                      <ChevronRight size={24} />
-                    </button>
-                  )}
-                  {founderIdx > 0 && (
-                    <button className="about-founder-arrow about-founder-arrow-left" onClick={() => setFounderIdx(founderIdx - 1)} aria-label="Anterior">
-                      <ChevronLeft size={24} />
-                    </button>
-                  )}
-                </div>
-                <div className="about-founder-dots">
-                  {team.map((_, i) => (
-                    <button key={i} className={`about-dot ${founderIdx === i ? 'about-dot-active' : ''}`} onClick={() => setFounderIdx(i)} aria-label={`Ver fundador ${i+1}`} />
-                  ))}
-                </div>
-              </div>
-              <div className="about-text-block">
+            /* Founders List (One below the other) */
+            <div className="about-founders-list">
+              <div className="about-text-block mb-12">
                 <h2 className="about-section-title">{content.title}</h2>
                 {content.paragraphs.map((p, i) => <p key={i} className="about-text">{p}</p>)}
+              </div>
+              <div className="flex flex-col gap-12 items-center">
+                {team.map((founder, i) => (
+                  <div key={i} className="about-founder-item flex flex-col md:flex-row items-center gap-8 bg-white p-8 rounded-[32px] shadow-sm border border-slate-100 w-full max-w-4xl">
+                    <div className="w-48 h-48 rounded-full overflow-hidden flex-shrink-0 shadow-lg border-4 border-white">
+                      <img src={founder.img} alt={founder.name} className="w-full h-full object-cover" />
+                    </div>
+                    <div className="text-center md:text-left">
+                      <h3 className="text-2xl font-bold text-navy mb-2">{founder.name}</h3>
+                      <p className="text-primary font-semibold text-lg mb-4">{founder.role}</p>
+                      <p className="text-text-muted">Líder dedicado à transformação social através da tecnologia e do amor ao próximo.</p>
+                    </div>
+                  </div>
+                ))}
               </div>
             </div>
           ) : (
@@ -117,7 +105,7 @@ const AboutUs = () => {
                 {content.paragraphs.map((p, i) => <p key={i} className="about-text">{p}</p>)}
               </div>
               <div className="about-img-wrap">
-                <img src="/team.JPG" alt="Próximo Amor" className="about-img" />
+                <img src="team.JPG" alt="Próximo Amor" className="about-img" />
               </div>
             </div>
           )}
