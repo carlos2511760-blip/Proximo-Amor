@@ -1,17 +1,29 @@
+<<<<<<< Updated upstream
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { Mail, Lock, Eye, EyeOff, LogIn } from 'lucide-react';
 import { useLanguage } from '../contexts/LanguageContext';
 import { supabase } from '../supabase';
 import Toast from '../components/Toast';
+=======
+import Layout from '../components/layout/Layout';
+>>>>>>> Stashed changes
 
 const Login = () => {
   const { t } = useLanguage();
   const navigate = useNavigate();
   const [loading, setLoading] = useState(false);
+<<<<<<< Updated upstream
   const [showPass, setShowPass] = useState(false);
   const [toast, setToast] = useState({ message: '', type: 'error' });
   const [formData, setFormData] = useState({ email: '', password: '' });
+=======
+  const [toast, setToast] = useState({ message: '', type: 'error' });
+  const [formData, setFormData] = useState({
+    email: '',
+    password: ''
+  });
+>>>>>>> Stashed changes
 
   const showToast = (message, type = 'error') => setToast({ message, type });
   const closeToast = () => setToast({ message: '', type: 'error' });
@@ -20,6 +32,7 @@ const Login = () => {
     if (!msg) return 'Ocorreu um erro inesperado. Tente novamente.';
     const m = msg.toLowerCase();
     if (m.includes('invalid login credentials') || m.includes('invalid_grant'))
+<<<<<<< Updated upstream
       return 'E-mail ou senha incorretos. Verifique seus dados.';
     if (m.includes('network') || m.includes('fetch'))
       return 'Problema de conexão. Verifique sua internet.';
@@ -41,11 +54,29 @@ const Login = () => {
       navigate(profile?.role === 'ong' ? '/ong/dashboard' : '/voluntario/dashboard');
     } catch (error) {
       showToast(traduzirErro(error.message));
+=======
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setLoading(true);
+    try {
+      const { data, error } = await supabase.auth.signInWithPassword({
+        email: formData.email,
+        password: formData.password,
+      });
+
+      if (error) throw error;
+      
+      setToast({ message: t('auth.loginSuccess'), type: 'success' });
+      setTimeout(() => navigate('/vagas'), 1500);
+    } catch (error) {
+      setToast({ message: error.message, type: 'error' });
+>>>>>>> Stashed changes
     } finally {
       setLoading(false);
     }
   };
 
+<<<<<<< Updated upstream
   return (
     <div className="flex min-h-screen items-center justify-center bg-white py-12 px-4 sm:px-6 lg:px-8">
       <Toast message={toast.message} type={toast.type} onClose={closeToast} />
@@ -134,6 +165,43 @@ const Login = () => {
         </div>
       </div>
     </div>
+=======
+  const closeToast = () => setToast({ message: '', type: 'error' });
+
+  return (
+    <div className="flex min-h-screen items-center justify-center bg-white py-12 px-4 sm:px-6 lg:px-8">
+      <Toast message={toast.message} type={toast.type} onClose={closeToast} />
+                value={formData.password}
+                onChange={(e) => setFormData({...formData, password: e.target.value})}
+              />
+            </div>
+            
+            <div className="flex items-center justify-between text-sm px-1">
+              <label className="flex items-center gap-2 cursor-pointer text-text-muted">
+                <input type="checkbox" className="w-4 h-4 rounded border-slate-300 accent-primary" /> 
+                {t('auth.remember')}
+              </label>
+              <a href="#" className="font-bold text-primary hover:underline">{t('auth.forgot')}</a>
+            </div>
+
+            <button 
+              type="submit" 
+              className="btn btn-primary w-full py-4 text-lg mt-4" 
+              disabled={loading}
+            >
+              {loading ? 'Entrando...' : t('auth.enter')}
+            </button>
+          </form>
+          
+          <div className="mt-10 pt-8 border-t border-slate-50 text-center">
+            <p className="text-text-muted">
+              {t('auth.noAccount')} <Link to="/register-options" className="font-bold text-primary hover:underline ml-1">{t('auth.signup')}</Link>
+            </p>
+          </div>
+        </div>
+      </div>
+    </Layout>
+>>>>>>> Stashed changes
   );
 };
 

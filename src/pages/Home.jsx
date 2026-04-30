@@ -1,12 +1,19 @@
 import React, { useState } from 'react';
+<<<<<<< Updated upstream
 import { Link } from 'react-router-dom';
 import { useLanguage } from '../contexts/LanguageContext';
+=======
+import { Link, useNavigate } from 'react-router-dom';
+>>>>>>> Stashed changes
 import { Search, MapPin, Calendar, Users, Heart, ArrowRight, Filter } from 'lucide-react';
 import Header from '../components/layout/Header';
 import Footer from '../components/layout/Footer';
 
 const Home = () => {
+<<<<<<< Updated upstream
   const { t } = useLanguage();
+=======
+>>>>>>> Stashed changes
   const [searchQuery, setSearchQuery] = useState('');
 
   const raizesDaSemana = [
@@ -17,7 +24,11 @@ const Home = () => {
       desc: "Busca-se voluntários para montar um jardim comunitário em nosso bairro para fortalecer o hortifruti da região!",
       location: "Guarulhos, São Paulo",
       date: "21/04/2026",
+<<<<<<< Updated upstream
       image: "jardim.jpeg",
+=======
+      image: "/resources/images/jardim.jpeg",
+>>>>>>> Stashed changes
       category: "Meio Ambiente"
     },
     {
@@ -27,7 +38,11 @@ const Home = () => {
       desc: "Venha fazer pintura de rosto e ajudar a criar momentos felizes em nossa comunidade!",
       location: "Osasco, São Paulo",
       date: "23/04/2026",
+<<<<<<< Updated upstream
       image: "pintura.webp",
+=======
+      image: "/resources/images/pintura.webp",
+>>>>>>> Stashed changes
       category: "Cultura"
     },
     {
@@ -37,7 +52,11 @@ const Home = () => {
       desc: "Precisamos de voluntários para entregar alimentos na comunidade México 70 e espalhar cuidado.",
       location: "São Paulo, São Paulo",
       date: "28/04/2026",
+<<<<<<< Updated upstream
       image: "alimento.webp",
+=======
+      image: "/resources/images/alimento.webp",
+>>>>>>> Stashed changes
       category: "Social"
     }
   ];
@@ -54,11 +73,16 @@ const Home = () => {
             alt="Voluntariado" 
             className="w-full h-full object-cover"
           />
+<<<<<<< Updated upstream
           <div className="absolute inset-0 bg-navy-60 backdrop-blur-2px"></div>
+=======
+          <div className="absolute inset-0 bg-navy/60 backdrop-blur-[2px]"></div>
+>>>>>>> Stashed changes
         </div>
 
         <div className="container relative z-10 text-center text-white flex flex-col items-center gap-8">
           <h1 className="text-5xl md:text-7xl font-bold leading-tight max-w-4xl">
+<<<<<<< Updated upstream
             {t('search_title')}
           </h1>
           <p className="text-xl md:text-2xl text-white-90 font-medium">
@@ -67,11 +91,25 @@ const Home = () => {
 
           {/* Search Box */}
           <div className="w-full max-w-2xl bg-white-10 backdrop-blur-md p-2 rounded-[30px] border border-white-20 shadow-2xl mt-4">
+=======
+            Somos uma iniciativa dedicada a transformar vidas por meio do voluntariado.
+          </h1>
+          <p className="text-xl md:text-2xl text-white-90 font-medium">
+            Faça parte desse amor hoje!
+          </p>
+
+          {/* Search Box */}
+          <div className="w-full max-w-2xl bg-white/10 backdrop-blur-md p-2 rounded-[30px] border border-white/20 shadow-2xl mt-4">
+>>>>>>> Stashed changes
             <div className="flex items-center bg-white rounded-[24px] px-6 py-2">
               <Search className="text-text-light mr-4" size={24} />
               <input 
                 type="text" 
+<<<<<<< Updated upstream
                 placeholder={t('search_placeholder')} 
+=======
+                placeholder="Busque por folhas, galhos, etc..." 
+>>>>>>> Stashed changes
                 className="flex-1 border-none outline-none py-3 text-lg text-navy placeholder:text-text-light"
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
@@ -90,12 +128,19 @@ const Home = () => {
             </h2>
             <div className="flex gap-4">
               <button className="btn btn-secondary flex items-center gap-2 px-8 py-3 bg-slate-50 border-none shadow-sm">
+<<<<<<< Updated upstream
                 <ChevronDown size={20} className="mt-1" />
                 {t('search_causes')}
               </button>
               <button className="btn btn-secondary flex items-center gap-2 px-8 py-3 bg-slate-50 border-none shadow-sm">
                 <ChevronDown size={20} className="mt-1" />
                 {t('search_areas')}
+=======
+                Causas
+              </button>
+              <button className="btn btn-secondary flex items-center gap-2 px-8 py-3 bg-slate-50 border-none shadow-sm">
+                Áreas
+>>>>>>> Stashed changes
               </button>
             </div>
           </div>
@@ -107,11 +152,19 @@ const Home = () => {
         <div className="container">
           <div className="flex items-end justify-between mb-16">
             <div>
+<<<<<<< Updated upstream
               <h2 className="text-4xl font-bold text-navy mb-4">{t('jobs_title')}</h2>
               <p className="text-text-muted text-lg">{t('jobs_subtitle')}</p>
             </div>
             <Link to="/vagas" className="btn btn-secondary border-none text-primary font-bold group">
               {t('jobs_view_all')} <ArrowRight className="group-hover:translate-x-1 transition-transform" size={20} />
+=======
+              <h2 className="text-4xl font-bold text-navy mb-4">Raízes da semana</h2>
+              <p className="text-text-muted text-lg">Veja as oportunidades selecionadas pelo Próximo Amor para esta semana!</p>
+            </div>
+            <Link to="/vagas" className="btn btn-secondary border-none text-primary font-bold group">
+              Ver todas <ArrowRight className="group-hover:translate-x-1 transition-transform" size={20} />
+>>>>>>> Stashed changes
             </Link>
           </div>
 
@@ -155,15 +208,19 @@ const Home = () => {
 
       {/* Impact Section */}
       <section className="py-24 bg-navy relative overflow-hidden">
+<<<<<<< Updated upstream
         <div className="absolute top-0 left-0 w-full h-full opacity-5 pointer-events-none">
           {/* Pattern or texture */}
         </div>
+=======
+>>>>>>> Stashed changes
         <div className="container relative z-10">
           <div className="text-center mb-16">
             <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">Nosso Impacto em Números</h2>
             <p className="text-text-light text-lg max-w-2xl mx-auto">Juntos estamos construindo uma rede de solidariedade cada vez mais forte.</p>
           </div>
 
+<<<<<<< Updated upstream
           <div className="grid grid-cols-1 md-grid-cols-2 lg-grid-cols-4 gap-8">
              {[
                 { label: "Voluntários ativos", value: "2.4k+", icon: <Users size={32} /> },
@@ -173,6 +230,17 @@ const Home = () => {
              ].map((stat, i) => (
                <div key={i} className="bg-white-5 border border-white-10 p-8 rounded-[32px] text-center flex flex-col items-center gap-4 hover:bg-white-10 transition-all">
                  <div className="text-primary bg-primary-10 p-4 rounded-2xl">{stat.icon}</div>
+=======
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+             {[
+               { label: "Voluntários ativos", value: "2.4k+", icon: <Users size={32} /> },
+               { label: "ONGs parceiras", value: "150+", icon: <Filter size={32} /> },
+               { label: "Horas doadas", value: "15k+", icon: <Calendar size={32} /> },
+               { label: "Vidas impactadas", value: "10k+", icon: <Heart size={32} /> }
+             ].map((stat, i) => (
+               <div key={i} className="bg-white/5 border border-white/10 p-8 rounded-[32px] text-center flex flex-col items-center gap-4 hover:bg-white/10 transition-all">
+                 <div className="text-primary bg-primary/10 p-4 rounded-2xl">{stat.icon}</div>
+>>>>>>> Stashed changes
                  <div className="text-4xl font-bold text-white">{stat.value}</div>
                  <div className="text-text-light font-medium uppercase tracking-wider text-xs">{stat.label}</div>
                </div>
@@ -190,6 +258,9 @@ const ChevronDown = ({ size, className }) => (
 );
 
 // Simple Link if react-router is not available (mock)
+<<<<<<< Updated upstream
 const LinkShim = ({ href, children, ...props }) => <a href={href} {...props}>{children}</a>;
 
+=======
+>>>>>>> Stashed changes
 export default Home;

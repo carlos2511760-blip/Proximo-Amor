@@ -10,7 +10,17 @@ const RegisterVolunteer = () => {
   const navigate = useNavigate();
   const [loading, setLoading] = useState(false);
   const [toast, setToast] = useState({ message: '', type: 'error' });
+<<<<<<< Updated upstream
   const [formData, setFormData] = useState({ name: '', email: '', skills: '', password: '', confirmPassword: '' });
+=======
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    skills: '',
+    password: '',
+    confirmPassword: ''
+  });
+>>>>>>> Stashed changes
 
   const showToast = (message, type = 'error') => setToast({ message, type });
   const closeToast = () => setToast({ message: '', type: 'error' });
@@ -20,14 +30,22 @@ const RegisterVolunteer = () => {
     const m = msg.toLowerCase();
     if (m.includes('already exists') || m.includes('unique constraint') || m.includes('already registered'))
       return 'Este e-mail já está em uso. Tente outro.';
+<<<<<<< Updated upstream
     if (m.includes('password') && m.includes('short')) return 'A senha deve ter pelo menos 6 caracteres.';
     if (m.includes('network') || m.includes('fetch')) return 'Erro de conexão. Verifique sua internet.';
+=======
+    if (m.includes('password') && m.includes('short'))
+      return 'A senha deve ter pelo menos 6 caracteres.';
+    if (m.includes('network') || m.includes('fetch'))
+      return 'Erro de conexão. Verifique sua internet.';
+>>>>>>> Stashed changes
     return 'Não foi possível realizar o cadastro. Tente novamente.';
   }
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     closeToast();
+<<<<<<< Updated upstream
     if (formData.password !== formData.confirmPassword) {
       showToast('As senhas não coincidem!', 'warning');
       return;
@@ -47,6 +65,49 @@ const RegisterVolunteer = () => {
       if (profileError) throw profileError;
 
       showToast('Cadastro realizado com sucesso!', 'success');
+=======
+
+    if (formData.password !== formData.confirmPassword) {
+      showToast("As senhas não coincidem!", "warning");
+      return;
+    }
+
+    setLoading(true);
+    try {
+      // 0. Verifica se o e-mail já existe em algum perfil (ONG ou Voluntário)
+      const { data: existingProfile } = await supabase
+        .from('profiles')
+        .select('email')
+        .eq('email', formData.email)
+        .maybeSingle();
+
+      if (existingProfile) {
+        throw new Error("Este e-mail já está cadastrado em nossa plataforma.");
+      }
+
+      // 1. Cria o usuário no Supabase Auth
+      const { data: { user }, error: authError } = await supabase.auth.signUp({
+        email: formData.email,
+        password: formData.password,
+      });
+
+      if (authError) throw authError;
+
+      // 2. Cria o perfil na nossa tabela 'profiles'
+      const { error: profileError } = await supabase
+        .from('profiles')
+        .insert([{
+          id: user.id,
+          full_name: formData.name,
+          email: formData.email,
+          role: 'voluntario',
+          skills: formData.skills
+        }]);
+
+      if (profileError) throw profileError;
+
+      showToast("Cadastro realizado com sucesso!", "success");
+>>>>>>> Stashed changes
       setTimeout(() => navigate('/login'), 2000);
     } catch (error) {
       showToast(traduzirErro(error.message));
@@ -56,7 +117,11 @@ const RegisterVolunteer = () => {
   };
 
   return (
+<<<<<<< Updated upstream
     <div className="flex min-h-screen items-center justify-center bg-white py-12 px-4 sm:px-6 lg:px-8">
+=======
+    <>
+>>>>>>> Stashed changes
       <Toast message={toast.message} type={toast.type} onClose={closeToast} />
       
       <div className="w-full max-w-md space-y-8 bg-white p-10 rounded-[40px] border-2 border-black shadow-[0_20px_50px_rgba(0,0,0,0.1)]">

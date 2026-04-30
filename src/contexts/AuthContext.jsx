@@ -1,11 +1,18 @@
+<<<<<<< Updated upstream
 import React, { createContext, useContext, useEffect, useState } from 'react';
 import { supabase } from '../supabase';
 
 const AuthContext = createContext({});
+=======
+import React, { createContext, useContext, useState, useEffect } from 'react';
+
+const AuthContext = createContext();
+>>>>>>> Stashed changes
 
 export const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
   const [profile, setProfile] = useState(null);
+<<<<<<< Updated upstream
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -45,6 +52,17 @@ export const AuthProvider = ({ children }) => {
 
   return (
     <AuthContext.Provider value={{ user, profile, loading, signOut }}>
+=======
+  const [loading, setLoading] = useState(false);
+
+  const signOut = async () => {
+    setUser(null);
+    setProfile(null);
+  };
+
+  return (
+    <AuthContext.Provider value={{ user, profile, loading, signOut, setUser, setProfile }}>
+>>>>>>> Stashed changes
       {children}
     </AuthContext.Provider>
   );

@@ -1,0 +1,193 @@
+/* Estilos Exclusivos para Suporte Mobile (Injetados via script/index.html) */
+
+:root {
+  --mobile-nav-height: 65px;
+}
+
+body.is-mobile {
+  padding-bottom: calc(var(--mobile-nav-height) + env(safe-area-inset-bottom, 15px));
+  overflow-x: hidden;
+  width: 100vw;
+}
+
+/* Garantir que nada vaze para fora da tela no mobile */
+.is-mobile * {
+  max-width: 100%;
+  box-sizing: border-box !important;
+}
+
+/* Nova Bottom Navigation Bar com Glassmorphism */
+.mobile-bottom-nav {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: var(--mobile-nav-height);
+  background: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(15px) saturate(180%);
+  -webkit-backdrop-filter: blur(15px) saturate(180%);
+  border-top: 1px solid rgba(255, 255, 255, 0.3);
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  z-index: 9999;
+  box-shadow: 0 -8px 32px rgba(0, 0, 0, 0.1);
+  padding-bottom: env(safe-area-inset-bottom, 0);
+  transform: translateY(100%);
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+body.is-mobile .mobile-bottom-nav {
+  transform: translateY(0);
+}
+
+.mobile-nav-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  flex: 1;
+  height: 100%;
+  color: #64748b;
+  text-decoration: none;
+  font-size: 0.7rem;
+  font-weight: 700;
+  gap: 4px;
+  transition: all 0.3s ease;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+  opacity: 0.7;
+}
+
+.mobile-nav-item svg {
+  width: 22px;
+  height: 22px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  transition: transform 0.3s ease;
+}
+
+.mobile-nav-item.active {
+  color: #0066cc;
+  opacity: 1;
+}
+
+.mobile-nav-item.active svg {
+  transform: translateY(-2px);
+  filter: drop-shadow(0 2px 4px rgba(0, 102, 204, 0.3));
+}
+
+/* Ajustes de Layout para evitar o erro da imagem (conteúdo cortado) */
+@media (max-width: 768px) {
+  .hero-title {
+    font-size: 2rem !important;
+    padding: 0 1rem;
+    word-wrap: break-word;
+  }
+  
+  .hero-subtitle {
+    font-size: 0.95rem !important;
+    padding: 0 1.5rem;
+  }
+
+  .navbar {
+    padding: 1rem !important;
+  }
+
+  /* Forçar grids a 1 coluna */
+  .grid, .vagas-grid, .features-grid, .stats-grid {
+    display: flex !important;
+    flex-direction: column !important;
+    padding: 1rem !important;
+  }
+
+  .card {
+    width: 100% !important;
+    margin-bottom: 1.5rem !important;
+  }
+}
+
+/* Menu Mobile Overlay (Side Drawer) */
+.mobile-overlay-menu {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(11, 28, 60, 0.4);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  z-index: 10000;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+}
+
+.mobile-overlay-menu.open {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.mobile-drawer {
+  position: absolute;
+  top: 0;
+  left: -85%;
+  width: 85%;
+  max-width: 300px;
+  height: 100%;
+  background: #ffffff;
+  box-shadow: 10px 0 30px rgba(0,0,0,0.2);
+  padding: 2.5rem 1.5rem;
+  display: flex;
+  flex-direction: column;
+  transition: left 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.mobile-overlay-menu.open .mobile-drawer {
+  left: 0;
+}
+
+.drawer-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 3rem;
+}
+
+.drawer-close-btn {
+  background: #f1f5f9;
+  border: none;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #0b1c3c;
+  cursor: pointer;
+}
+
+.drawer-links {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.drawer-link {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #0b1c3c;
+  text-decoration: none;
+  padding: 0.75rem 1rem;
+  border-radius: 12px;
+  transition: background 0.2s;
+}
+
+.drawer-link:active {
+  background: #f1f5f9;
+  color: #0066cc;
+}
+

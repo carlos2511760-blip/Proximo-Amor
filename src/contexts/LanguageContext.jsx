@@ -6,6 +6,7 @@ export const LanguageProvider = ({ children }) => {
   const [language, setLanguage] = useState('pt-br');
 
   const t = (key) => {
+<<<<<<< Updated upstream
     const dicts = {
       'pt-br': {
         'nav.home': 'Início', 'nav.about': 'Sobre Nós', 'nav.login': 'Entrar', 'nav.register': 'Criar Conta',
@@ -100,6 +101,16 @@ export const LanguageProvider = ({ children }) => {
       }
     };
     return dicts[language]?.[key] || dicts['pt-br'][key] || key;
+=======
+    // Basic translation mock
+    const translations = {
+      'nav.home': 'Início',
+      'nav.about': 'Quem Somos',
+      'nav.faq': 'FAQ',
+      // ... more as needed
+    };
+    return translations[key] || key;
+>>>>>>> Stashed changes
   };
 
   return (

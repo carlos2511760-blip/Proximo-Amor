@@ -1,4 +1,5 @@
 import React from 'react';
+<<<<<<< Updated upstream
 import { HashRouter as Router, Routes, Route } from 'react-router-dom';
 import Layout from './components/layout/Layout';
 
@@ -12,11 +13,16 @@ import RegisterVolunteer from './pages/RegisterVolunteer';
 import SelectRegister from './pages/SelectRegister';
 import OngDashboard from './pages/OngDashboard';
 import VolunteerDashboard from './pages/VolunteerDashboard';
+=======
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import Home from './pages/Home';
+>>>>>>> Stashed changes
 
 function App() {
   return (
     <Router>
       <Routes>
+<<<<<<< Updated upstream
         {/* Dashboards (layout próprio) */}
         <Route path="/ong/dashboard" element={<OngDashboard />} />
         <Route path="/voluntario/dashboard" element={<VolunteerDashboard />} />
@@ -35,6 +41,9 @@ function App() {
 
         {/* Fallback */}
         <Route path="*" element={<Layout><Home /></Layout>} />
+=======
+        <Route path="/" element={<Home />} />
+>>>>>>> Stashed changes
       </Routes>
     </Router>
   );

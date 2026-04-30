@@ -14,7 +14,11 @@ import {
   Monitor,
   Heart,
   Bookmark,
+<<<<<<< Updated upstream
   BookmarkCheck,
+=======
+  Check,
+>>>>>>> Stashed changes
   Star,
   Award,
   MessageCircle,
@@ -33,7 +37,11 @@ import { getMapsUrl, getCalendarUrl } from '../utils';
 import { useLanguage } from '../contexts/LanguageContext';
 import { useAuth } from '../contexts/AuthContext';
 import { supabase } from '../supabase';
+<<<<<<< Updated upstream
 // import ChatMessenger from '../components/ChatMessenger';
+=======
+import ChatMessenger from '../components/ChatMessenger';
+>>>>>>> Stashed changes
 import Toast from '../components/Toast';
 import Layout from '../components/layout/Layout';
 
@@ -306,7 +314,11 @@ const VolunteerDashboard = () => {
                       <img src={vaga.image} alt={vaga.title} />
                       {vaga.urgent && <span className="urgent-badge"><Zap size={12} /> Urgente</span>}
                       <button className="save-btn" onClick={(e) => toggleSave(e, vaga.id)}>
+<<<<<<< Updated upstream
                         {savedVagas.includes(vaga.id) ? <BookmarkCheck size={20} /> : <Bookmark size={20} />}
+=======
+                        {savedVagas.includes(vaga.id) ? <Check size={20} /> : <Bookmark size={20} />}
+>>>>>>> Stashed changes
                       </button>
                     </div>
                     <div className="vol-vaga-body">
@@ -320,7 +332,11 @@ const VolunteerDashboard = () => {
                         <span><MapPin size={14} /> {vaga.location.length > 25 ? vaga.location.substring(0, 25) + '...' : vaga.location}</span>
                         {myParticipations.some(p => p.job_id === vaga.id) ? (
                           <span style={{ color: '#10b981', fontWeight: 600, fontSize: '0.85rem', display: 'flex', alignItems: 'center', gap: '4px' }}>
+<<<<<<< Updated upstream
                              <BookmarkCheck size={16} /> Inscrito
+=======
+                             <Check size={16} /> Inscrito
+>>>>>>> Stashed changes
                           </span>
                         ) : (
                           <button className="btn-primary" style={{ padding: '0.5rem 1.25rem', fontSize: '0.85rem' }}>{t('volApp.detailsBtn')}</button>
@@ -576,12 +592,16 @@ const VolunteerDashboard = () => {
 
           {/* ===================== CONFIGURAÇÕES ===================== */}
           {activeTab === 'mensagens' && (
+<<<<<<< Updated upstream
             <div className="empty-state" style={{ padding: '3rem' }}>
               <MessageCircle size={48} color="#cbd5e1" />
               <h3>Chat em manutenção</h3>
               <p>O sistema de mensagens está sendo atualizado.</p>
             </div>
             // <ChatMessenger userType="volunteer" />
+=======
+            <ChatMessenger userType="volunteer" />
+>>>>>>> Stashed changes
           )}
 
           {activeTab === 'configuracoes' && (
